@@ -2,7 +2,7 @@ import products from '../data/products.js';
 import matchedProducts from '../data/matchedProducts.js';
 
 const app = {   
-    init: function () {
+    init: () => {
         app.container = document.getElementById('todo');
         
         app.container.innerHTML = '';
@@ -11,7 +11,7 @@ const app = {
         app.productList();
     },
 
-    selectAndFormContainer: function () {
+    selectAndFormContainer: () => {
         app.inputContainer = document.createElement('div');
         app.inputContainer.classList.add('input-container');
 
@@ -21,7 +21,7 @@ const app = {
         app.container.appendChild(app.inputContainer);
     },
 
-    selectElement: function () {
+    selectElement: () => {
         app.select = document.createElement('select');
         app.select.id = 'allCategories';
         app.select.classList.add('input-container-select');
@@ -49,7 +49,7 @@ const app = {
         app.inputContainer.appendChild(app.select);
     },
 
-    formElement: function () {
+    formElement: () => {
         // creating Form
         app.form = document.createElement('form');
 
@@ -90,7 +90,7 @@ const app = {
         app.inputContainer.appendChild(app.form);
     },
 
-    productList: function () {
+    productList: () => {
         app.productListDiv = document.createElement('div');
         app.productListDiv.classList.add('products');
         matchedProducts.map((matchedProduct) => {
@@ -99,7 +99,7 @@ const app = {
         app.container.appendChild(app.productListDiv);
     },
 
-    product: function (hairProduct) {
+    product: (hairProduct) => {
         // creating one box containing one product
         app.oneProductDiv = document.createElement('div');
         app.oneProductDiv.classList.add('oneProduct');
@@ -131,7 +131,7 @@ const app = {
         app.productListDiv.appendChild(app.oneProductDiv);
     },
 
-    handleSubmit: function (event) {
+    handleSubmit: (event) => {
         event.preventDefault();
 
         // matchedProducts array is cleared
