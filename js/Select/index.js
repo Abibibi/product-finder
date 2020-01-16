@@ -1,7 +1,7 @@
-import { App } from '../App.js';
+import App from '../App.js';
 import products from '../../data/products.js';
 
-export const Select = () => {
+const Select = () => {
     // creating Select element
     App.select = document.createElement('select');
     App.select.classList.add('input-container-select');
@@ -27,3 +27,5 @@ export const Select = () => {
     
     App.inputContainer.appendChild(App.select);
 }
+
+export default Select;
