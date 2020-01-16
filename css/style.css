@@ -1,3 +1,8 @@
+#todo {
+    display: flex;
+    justify-content: center;
+}
+
 .input-container {
     display: flex;
     margin: 12rem auto;
@@ -36,7 +41,8 @@
 
     .input-container-label {
         position: absolute;
-        margin: 0.6rem -6.1rem;
+        top: .6rem;
+        left: 10.9rem;
         font-size: .8rem;
         color: gray;
     }
@@ -52,17 +58,24 @@
     .input-container-button {
         height: 2rem;
         position: absolute;
-    } 
+    }
+
+    .products {
+        display: flex;
+        position: absolute;
+        top: 17rem;
+    }
 
     .oneProduct {
         border: .3rem solid black;
         display: flex;
         flex-direction: column;
+        text-align: center;
+        align-items: center;
+        width: 9rem;
     }
 
-    .products {
-        position: absolute;
-        top: 3rem;
+    img {
+        width: 5rem
     }
-
 }

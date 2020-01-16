@@ -1,21 +1,24 @@
 import App from '../App.js'; 
 import { selectedCategory } from '../Select/index.js';
 import products from '../../data/products.js';
+import { Product } from '../ProductList/Product.js';
+
+// creating Form
+const form = document.createElement('form');
 
 // creating Form input
 const input = document.createElement('input');
 
+// creating Form button
+const button = document.createElement('button');
+
+// creating Form label
+const label = document.createElement('label');
+
 const Form = () => {
-    // creating Form
-    const form = document.createElement('form');
-
-    form.addEventListener('submit', handleSubmit);
-
     input.classList.add('input-container-input');
     input.title = 'Veuillez renseigner un prix maximal en euro';
 
-    // creating Form label
-    const label = document.createElement('label');
     label.classList.add('input-container-label');
     label.textContent = 'Prix maximal en €'
 
@@ -26,14 +29,12 @@ const Form = () => {
         label.classList.add('input-container-label-focus');
     });
 
-    input.addEventListener('blur', (event) => {
+    /* input.addEventListener('blur', (event) => {
         if (!event.target.value) {
             label.classList.remove('input-container-label-focus');
         }
-    });
+    }); */
 
-    // creating Form button
-    const button = document.createElement('button');
     button.classList.add('input-container-button');
     button.textContent = 'Ok';
 
@@ -42,7 +43,8 @@ const Form = () => {
     form.appendChild(button);
 
     App.inputContainer.appendChild(form);
-}
+
+};
 
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -65,11 +67,18 @@ const handleSubmit = (event) => {
                     // if, in this array, products prices match price given by user
                     if (eachProduct.price < input.value) {
                         console.log(eachProduct);
+                        Product(eachProduct);
                     }
                 });
             }
         }
     });
+
+    App.init();
+
+    form.reset();
 }
+
+form.addEventListener('submit', handleSubmit);
 
 export default Form;

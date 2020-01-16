@@ -3,17 +3,18 @@ import Form from './Form/index.js';
 import { ProductList } from './ProductList/index.js';
 
 const App = {
-    inputContainer: document.createElement('div'),
-    init: () => {
-        const container = document.getElementById('todo');
+    container: document.getElementById('todo'),
 
-        container.innerHTML = '';
+    inputContainer: document.createElement('div'),
+
+    init: () => {
+        App.container.innerHTML = '';
+        App.inputContainer.classList.add('input-container');
+        App.container.appendChild(App.inputContainer);
+        
         Select();
         Form();
         ProductList();
-
-        App.inputContainer.classList.add('input-container');
-        container.appendChild(App.inputContainer);
     }
 };
 

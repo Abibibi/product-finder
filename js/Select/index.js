@@ -3,9 +3,15 @@ import products from '../../data/products.js';
 
 export let selectedCategory = '';
 
+// creating Select element
+const select = document.createElement('select');
+
+// creating Select 1st option (containing text to inform user about options type)
+const firstOption = document.createElement('option');
+
+
 export const Select = () => {
-    // creating Select element
-    const select = document.createElement('select');
+
     select.id = 'allCategories';
     select.classList.add('input-container-select');
     select.title = 'Veuillez sélectionner un type de produit'
@@ -16,8 +22,6 @@ export const Select = () => {
         console.log(selectedCategory);
     });
 
-    // creating Select 1st option (containing text to inform user about options type)
-    const firstOption = document.createElement('option');
     firstOption.textContent = 'Type de produit';
 
     select.appendChild(firstOption);
