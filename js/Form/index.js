@@ -2,38 +2,38 @@ import App from '../App.js';
 
 const Form = () => {
     // creating Form
-    App.form = document.createElement('form');
+    const form = document.createElement('form');
 
     // creating Form input
-    App.input = document.createElement('input');
-    App.input.classList.add('input-container-input');
-    App.input.title = 'Veuillez renseigner un prix maximal en euro';
+    const input = document.createElement('input');
+    input.classList.add('input-container-input');
+    input.title = 'Veuillez renseigner un prix maximal en euro';
+
+    // creating Form label
+    const label = document.createElement('label');
+    label.classList.add('input-container-label');
+    label.textContent = 'Prix maximal en €'
 
     // to make label go up on focus, and go back down on blur
     // (label is in position absolute, see css)
-    App.input.addEventListener('focus', () => {
-        App.label.classList.add('input-container-label-focus');
+    input.addEventListener('focus', () => {
+        label.classList.add('input-container-label-focus');
     });
 
-    App.input.addEventListener('blur', () => {
-        App.label.classList.remove('input-container-label-focus');
+    input.addEventListener('blur', () => {
+        label.classList.remove('input-container-label-focus');
     });
-
-    // creating Form label
-    App.label = document.createElement('label');
-    App.label.classList.add('input-container-label');
-    App.label.textContent = 'Prix maximal en €'
 
     // creating Form button
-    App.button = document.createElement('button');
-    App.button.classList.add('input-container-button');
-    App.button.textContent = 'Ok';
+    const button = document.createElement('button');
+    button.classList.add('input-container-button');
+    button.textContent = 'Ok';
 
-    App.form.appendChild(App.input);
-    App.form.appendChild(App.label);
-    App.form.appendChild(App.button);
+    form.appendChild(input);
+    form.appendChild(label);
+    form.appendChild(button);
 
-    App.inputContainer.appendChild(App.form);
+    App.inputContainer.appendChild(form);
 }
 
 export default Form;

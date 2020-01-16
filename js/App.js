@@ -2,16 +2,16 @@ import Select from './Select/index.js';
 import Form from './Form/index.js';
 
 const App = {
+    inputContainer: document.createElement('div'),
     init: () => {
-        App.container = document.getElementById('todo');
-        App.inputContainer = document.createElement('div');
+        const container = document.getElementById('todo');
 
-        App.container.innerHTML = '';
+        container.innerHTML = '';
         Select();
         Form();
 
         App.inputContainer.classList.add('input-container');
-        App.container.appendChild(App.inputContainer);
+        container.appendChild(App.inputContainer);
     }
 };
 
