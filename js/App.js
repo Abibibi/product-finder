@@ -1,5 +1,6 @@
 import Select from './Select/index.js';
 import Form from './Form/index.js';
+import { ProductList } from './ProductList/index.js';
 
 const App = {
     inputContainer: document.createElement('div'),
@@ -9,6 +10,7 @@ const App = {
         container.innerHTML = '';
         Select();
         Form();
+        ProductList();
 
         App.inputContainer.classList.add('input-container');
         container.appendChild(App.inputContainer);

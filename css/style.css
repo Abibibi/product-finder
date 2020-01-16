@@ -53,4 +53,16 @@
         height: 2rem;
         position: absolute;
     } 
+
+    .oneProduct {
+        border: .3rem solid black;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .products {
+        position: absolute;
+        top: 3rem;
+    }
+
 }
