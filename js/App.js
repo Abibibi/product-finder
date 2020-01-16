@@ -1,4 +1,4 @@
-import Select from './Select/index.js';
+import { Select } from './Select/index.js';
 import Form from './Form/index.js';
 import { ProductList } from './ProductList/index.js';
 
