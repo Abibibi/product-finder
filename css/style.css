@@ -1,3 +1,56 @@
 .input-container {
     display: flex;
+    margin: 12rem auto;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 19rem;
+}
+
+@keyframes label {
+    0% {
+        transform: translateY(0);
+        color: gray;
+    }
+
+    100% {
+        transform: translateY(-.4rem);
+        color: blue;
+    }
+}
+
+@media screen and (min-width: 300px) {
+    .input-container-select {
+        width: 10rem;
+        height: 2rem;
+    }
+
+    .input-container-input {
+        position: relative;
+        margin-left: .7rem;
+        width: 6.3rem;
+        height: 2rem;
+        padding: .6rem 0.1rem 0.1rem;
+    }
+
+    .input-container-label {
+        position: absolute;
+        margin: 0.6rem -6.1rem;
+        font-size: .8rem;
+        color: gray;
+    }
+
+    .input-container-label-focus {
+        font-size: .55em;
+        text-transform: uppercase;
+        display: block;
+        animation: label .8s; 
+        animation-fill-mode: forwards;
+    }  
+
+    .input-container-button {
+        height: 2rem;
+        position: absolute;
+    } 
 }
