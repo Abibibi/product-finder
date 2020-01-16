@@ -7,24 +7,26 @@ const app = {
         
         app.container.innerHTML = '';
         
-        app.selectAndFormContainer();
+        app.formElement();
         app.productList();
     },
 
-    selectAndFormContainer: () => {
-        app.inputContainer = document.createElement('div');
-        app.inputContainer.classList.add('input-container');
+    formElement: () => {
+        // creating Form
+        app.form = document.createElement('form');
+        app.form.classList.add('form');
+        app.form.addEventListener('submit', app.handleSubmit);
 
         app.selectElement();
-        app.formElement();
+        app.inputLabelButtonElements();
 
-        app.container.appendChild(app.inputContainer);
+        app.container.appendChild(app.form);
     },
 
     selectElement: () => {
         app.select = document.createElement('select');
         app.select.id = 'allCategories';
-        app.select.classList.add('input-container-select');
+        app.select.classList.add('form-select');
         app.select.title = 'Veuillez sélectionner un type de produit'
 
         // listening to Select changes to retrieve selection option value
@@ -46,48 +48,43 @@ const app = {
             app.select.appendChild(app.option);
         });
         
-        app.inputContainer.appendChild(app.select);
+        app.form.appendChild(app.select);
     },
 
-    formElement: () => {
-        // creating Form
-        app.form = document.createElement('form');
-
-        app.form.addEventListener('submit', app.handleSubmit);
-
+    inputLabelButtonElements: () => {
         // creating Form input
         app.input = document.createElement('input');
-        app.input.classList.add('input-container-input');
+        app.input.classList.add('form-input');
         app.input.title = 'Veuillez renseigner un prix maximal en euro';
 
         // creating Form label
         app.label = document.createElement('label');
-        app.label.classList.add('input-container-label');
+        app.label.classList.add('form-label');
         app.label.textContent = 'Prix maximal en €';
 
         // to make label go up on focus, and go back down on blur
         // (label is in position absolute, see css)
         if(app)
         app.input.addEventListener('focus', () => {
-            app.label.classList.add('input-container-label-focus');
+            app.label.classList.add('form-label-focus');
         });
 
         app.input.addEventListener('blur', () => {
             if (!app.input.value) {
-                app.label.classList.remove('input-container-label-focus');
+                app.label.classList.remove('form-label-focus');
             }
         });
 
         // creating Form button
+        app.buttonDiv = document.createElement('div');
         app.button = document.createElement('button');
-        app.button.classList.add('input-container-button');
+        app.button.classList.add('form-button');
         app.button.textContent = 'Ok';
+        app.buttonDiv.appendChild(app.button);
     
         app.form.appendChild(app.input);
         app.form.appendChild(app.label);
-        app.form.appendChild(app.button);
-    
-        app.inputContainer.appendChild(app.form);
+        app.form.appendChild(app.buttonDiv);
     },
 
     productList: () => {
@@ -102,26 +99,33 @@ const app = {
     product: (hairProduct) => {
         // creating one box containing one product
         app.oneProductDiv = document.createElement('div');
-        app.oneProductDiv.classList.add('oneProduct');
+        app.oneProductDiv.classList.add('products-product');
     
         // creating each part of the box
-        app.productPicture = document.createElement('img');
-        app.productPicture.src = hairProduct.picture;
+        app.productPictureDiv = document.createElement('div');
+        app.productPictureDiv.classList.add('products-product-imgdiv');
         
-        app.productName = document.createElement('p');
+        app.productPicture = document.createElement('img');
+        app.productPicture.classList.add('products-product-imgdiv-img');
+
+        app.productPicture.src = hairProduct.picture;
+        app.productPictureDiv.appendChild(app.productPicture);
+        
+        app.productName = document.createElement('div');
         app.productName.textContent = hairProduct.name;
         
-        app.productBrand = document.createElement('p');
+        app.productBrand = document.createElement('div');
         app.productBrand.textContent = hairProduct.brand;
         
-        app.productCategory = document.createElement('p');
+        app.productCategory = document.createElement('div');
         app.productCategory.textContent = hairProduct.category;
         
-        app.productPrice = document.createElement('p');
+        app.productPrice = document.createElement('div');
+        app.productPrice.classList.add('products-product-price')
         app.productPrice.textContent = `${hairProduct.price} €`;
         
         // adding each part in one product box
-        app.oneProductDiv.appendChild(app.productPicture);
+        app.oneProductDiv.appendChild(app.productPictureDiv);
         app.oneProductDiv.appendChild(app.productName);
         app.oneProductDiv.appendChild(app.productBrand);
         app.oneProductDiv.appendChild(app.productCategory);

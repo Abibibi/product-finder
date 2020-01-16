@@ -1,17 +1,3 @@
-#todo {
-    display: flex;
-    justify-content: center;
-}
-
-.input-container {
-    display: flex;
-    margin: 12rem auto;
-    text-align: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 19rem;
-}
 
 @keyframes label {
     0% {
@@ -26,28 +12,53 @@
 }
 
 @media screen and (min-width: 300px) {
-    .input-container-select {
-        width: 10rem;
-        height: 2rem;
+    #todo {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .form {
+        display: flex;
+        margin: 12rem auto;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 19rem;
     }
 
-    .input-container-input {
+    .form-select {
+        width: 10rem;
+        height: 2rem;
+        border-bottom: .1rem solid pink;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        background-color: #ffffff;
+    }
+
+    .form-input {
         position: relative;
         margin-left: .7rem;
         width: 6.3rem;
         height: 2rem;
         padding: .6rem 0.1rem 0.1rem;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        border-bottom: .1rem solid pink;
     }
 
-    .input-container-label {
+    .form-label {
         position: absolute;
         top: .6rem;
-        left: 10.9rem;
+        left: 9.9rem;
         font-size: .8rem;
         color: gray;
+        pointer-events: none;
     }
 
-    .input-container-label-focus {
+    .form-label-focus {
         font-size: .55em;
         text-transform: uppercase;
         display: block;
@@ -55,27 +66,56 @@
         animation-fill-mode: forwards;
     }  
 
-    .input-container-button {
+    .form-button {
         height: 2rem;
-        position: absolute;
+        width: 2.3rem;
+        margin-left: .6rem;
+        border-radius: 5px;
+        border: none;
+        background: #e2dddd;
     }
 
     .products {
         display: flex;
+        flex-direction: column;
         position: absolute;
         top: 17rem;
     }
 
-    .oneProduct {
-        border: .3rem solid black;
+    .products-product {
+        border: .1rem solid black;
         display: flex;
         flex-direction: column;
         text-align: center;
         align-items: center;
-        width: 9rem;
+        width: 18rem;
+        height: 21rem;
+        margin: 1rem 0;
+        position: relative;
     }
 
-    img {
-        width: 5rem
+    .products-product-imgdiv {
+        width: 15rem;
+        height: auto;
+    }
+
+    .products-product-imgdiv-img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .products-product-price {
+        position: absolute;
+        bottom: .3rem
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .products {
+        flex-direction: row;
+    }
+
+    .products-product {
+        margin: 0 1rem;
     }
 }
