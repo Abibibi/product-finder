@@ -34,8 +34,27 @@ const app = {
             app.selectedCategory = app.select.value;
         });
 
+        app.selectLabel = document.createElement('label');
+        app.selectLabel.classList.add('form-label', 'form-select-label')
+        app.selectLabel.textContent = 'Type de produit';
+
+        // to make label go up on focus, and go back down on blur
+        // (label is in position absolute, see css)
+        app.select.addEventListener('focus', () => {
+            app.selectLabel.classList.add('form-label-focus');
+            app.select.classList.add('form-select-black');
+        });
+
+        app.select.addEventListener('blur', () => {
+            if (!app.select.value) {
+                app.selectLabel.classList.remove('form-label-focus', 'form-select-black');
+                app.select.classList.remove('form-select-black');
+            }
+        });
+
         app.firstOption = document.createElement('option');
-        app.firstOption.textContent = 'Type de produit';
+        app.firstOption.textContent = ' -- Type de produit -- ';
+        app.firstOption.classList.add('form-firstoption');
         app.select.appendChild(app.firstOption);
 
         // creating following options values, which are read from data
@@ -47,8 +66,9 @@ const app = {
             app.option.textContent = categoryName;
             app.select.appendChild(app.option);
         });
-        
+
         app.form.appendChild(app.select);
+        app.form.appendChild(app.selectLabel);
     },
 
     inputLabelButtonElements: () => {
@@ -58,20 +78,19 @@ const app = {
         app.input.title = 'Veuillez renseigner un prix maximal en euro';
 
         // creating Form label
-        app.label = document.createElement('label');
-        app.label.classList.add('form-label');
-        app.label.textContent = 'Prix maximal en €';
+        app.inputLabel = document.createElement('label');
+        app.inputLabel.classList.add('form-label', 'form-input-label');
+        app.inputLabel.textContent = 'Prix maximal en €';
 
         // to make label go up on focus, and go back down on blur
         // (label is in position absolute, see css)
-        if(app)
         app.input.addEventListener('focus', () => {
-            app.label.classList.add('form-label-focus');
+            app.inputLabel.classList.add('form-label-focus');
         });
 
         app.input.addEventListener('blur', () => {
             if (!app.input.value) {
-                app.label.classList.remove('form-label-focus');
+                app.inputLabel.classList.remove('form-label-focus');
             }
         });
 
@@ -83,7 +102,7 @@ const app = {
         app.buttonDiv.appendChild(app.button);
     
         app.form.appendChild(app.input);
-        app.form.appendChild(app.label);
+        app.form.appendChild(app.inputLabel);
         app.form.appendChild(app.buttonDiv);
     },
 
@@ -122,7 +141,7 @@ const app = {
         
         app.productPrice = document.createElement('div');
         app.productPrice.classList.add('products-product-price')
-        app.productPrice.textContent = `${hairProduct.price} €`;
+        app.productPrice.textContent = `${hairProduct.price.toFixed(2)} €`;
         
         // adding each part in one product box
         app.oneProductDiv.appendChild(app.productPictureDiv);
@@ -148,7 +167,7 @@ const app = {
             for (const categoryProduct in categoryName) {
                 // every array of products per category
                 const eachCategoryProducts = categoryName[categoryProduct];
-                
+
                 // if category selected by user matches the category of one of the product arrays
                 if (app.selectedCategory === categoryProduct) {
 
@@ -160,6 +179,7 @@ const app = {
                             // they are put in matchedProducts array,
                             // which is to be displayed
                             // (see productList method)
+                            console.log(eachProduct);
                             matchedProducts.push(eachProduct);
 
                         }
