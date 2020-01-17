@@ -3,6 +3,13 @@
         display: flex;
         justify-content: center;
     }
+
+    .title {
+        position: absolute;
+        font-family: 'Poiret One', cursive;
+        font-size: 1.6rem;
+        top: 5rem;
+    }
     
     .form {
         display: flex;
@@ -98,7 +105,6 @@
     }
 
     .products-product {
-        border: .1rem solid black;
         display: flex;
         flex-direction: column;
         text-align: center;
@@ -107,21 +113,62 @@
         height: 21rem;
         margin: 1rem 0;
         position: relative;
+        background: #f3eded;
+        border-radius: 1.9rem;
     }
 
     .products-product-imgdiv {
-        width: 15rem;
+        width: 12.7rem;
         height: auto;
     }
 
-    .products-product-imgdiv-img {
-        max-width: 100%;
+    .products-product-imgdiv .products-product-imgdiv-img {
+        max-width: 66.2%;
         max-height: 100%;
+        margin: .9rem 0 1rem;
+        -webkit-transition: all 1s ease; /* Safari and Chrome */
+        -moz-transition: all 1s ease; /* Firefox */
+        -ms-transition: all 1s ease; /* Internet Explorer 9 */
+        -o-transition: all 1s ease; /* Opera */
+        transition: all 1s ease;
+    }
+
+    .products-product-imgdiv:hover .products-product-imgdiv-img {
+        -webkit-transform:scale(1.2); /* Safari and Chrome */
+        -moz-transform:scale(1.2); /* Firefox */
+        -ms-transform:scale(1.2); /* Internet Explorer 9 */
+        -o-transform:scale(1.2); /* Opera */
+        transform:scale(1.2);
+    }
+
+    .products-product-name-brand {
+        width: 100%;
+        padding: .8rem;
+        background-color: #7b6161;
+        color: white;
+    }
+
+    .products-product-name {
+        font-family: 'Poiret One', cursive;
+    }
+
+    .products-product-brand {
+        margin-top: .8rem;
+        font-size: .8rem;
+        font-family: 'Gayathri', sans-serif;
+    }
+
+    .products-product-category {
+        margin-top: 1.6rem;
+        font-size: .7rem;
+        font-family: 'Gayathri', sans-serif;
     }
 
     .products-product-price {
         position: absolute;
-        bottom: .3rem
+        bottom: 1.3rem;
+        color: gray;
+        font-family: 'Gayathri', sans-serif;
     }
 }
 
@@ -143,6 +190,6 @@
 
     100% {
         transform: translateY(-.4rem);
-        color: blue;
+        color: #633131;
     }
 }

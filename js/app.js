@@ -7,8 +7,16 @@ const app = {
         
         app.container.innerHTML = '';
         
+        app.titleElement();
         app.formElement();
         app.productList();
+    },
+
+    titleElement: () => {
+        app.title = document.createElement('h1');
+        app.title.classList.add('title');
+        app.title.textContent = 'Mes produits capillaires';
+        app.container.appendChild(app.title);
     },
 
     formElement: () => {
@@ -131,12 +139,19 @@ const app = {
         app.productPictureDiv.appendChild(app.productPicture);
         
         app.productName = document.createElement('div');
+        app.productName.classList.add('products-product-name');
         app.productName.textContent = hairProduct.name;
         
         app.productBrand = document.createElement('div');
+        app.productBrand.classList.add('products-product-brand');
         app.productBrand.textContent = hairProduct.brand;
+
+        app.productNameBrand = document.createElement('div');
+        app.productNameBrand.classList.add('products-product-name-brand');
+        app.productNameBrand.append(app.productName, app.productBrand);
         
         app.productCategory = document.createElement('div');
+        app.productCategory.classList.add('products-product-category');
         app.productCategory.textContent = hairProduct.category;
         
         app.productPrice = document.createElement('div');
@@ -144,11 +159,12 @@ const app = {
         app.productPrice.textContent = `${hairProduct.price.toFixed(2)} €`;
         
         // adding each part in one product box
-        app.oneProductDiv.appendChild(app.productPictureDiv);
-        app.oneProductDiv.appendChild(app.productName);
-        app.oneProductDiv.appendChild(app.productBrand);
-        app.oneProductDiv.appendChild(app.productCategory);
-        app.oneProductDiv.appendChild(app.productPrice);
+        app.oneProductDiv.append(
+            app.productPictureDiv,
+            app.productNameBrand,
+            app.productCategory,
+            app.productPrice
+        );
     
         // adding each product box in product list
         app.productListDiv.appendChild(app.oneProductDiv);
