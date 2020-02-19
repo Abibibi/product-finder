@@ -1,3 +1,4 @@
+import navlinks from '../data/navlinks.js';
 import products from '../data/products.js';
 import matchedProducts from '../data/matchedProducts.js';
 
@@ -8,7 +9,7 @@ const app = {
         app.container.innerHTML = '';
         
         app.headerElement();
-        app.titleElement();
+        app.titleNavElements();
         app.formElement();
         app.productList();
     },
@@ -19,12 +20,42 @@ const app = {
         app.container.appendChild(app.header);
     },
 
-    titleElement: () => {
+    titleNavElements: () => {
         app.title = document.createElement('h1');
         app.title.classList.add('title');
         app.title.textContent = 'Mes produits capillaires';
 
-        app.header.appendChild(app.title);
+        app.nav = document.createElement('nav');
+        app.ul = document.createElement('ul');
+        app.ul.classList.add('nav-links');
+
+        navlinks.map((navlink) => {
+            app.li = document.createElement('li');
+            app.a = document.createElement('a');
+            app.a.setAttribute('href', navlink === 'Accueil' ? '#' : 'mailto:abeba.ngwe@gmail.com?Subject=Prise de contact');
+            if (navlink === 'Contact') {
+                app.a.setAttribute('target', '_blank');
+                app.a.setAttribute('rel', 'noopener noreferrer');
+            }
+            app.a.textContent = navlink;
+            
+            app.li.appendChild(app.a);
+            app.ul.appendChild(app.li);
+        });
+
+        app.nav.appendChild(app.ul);
+
+        app.titleNavContainer = document.createElement('div');
+        app.titleNavContainer.classList.add('title-nav-container');
+
+        app.titleNavContainer.append(
+            app.title,
+            app.nav
+        );
+
+        app.header.append(
+            app.titleNavContainer
+        );
     },
 
     formElement: () => {
@@ -119,14 +150,12 @@ const app = {
         );
 
         // creating Form button
-        app.buttonDiv = document.createElement('div');
         app.button = document.createElement('button');
         app.button.classList.add('form-button');
         app.button.textContent = 'Ok';
-        app.buttonDiv.appendChild(app.button);
     
         app.form.appendChild(app.inputLabelContainer);
-        app.form.appendChild(app.buttonDiv);
+        app.form.appendChild(app.button);
     },
 
     productList: () => {
