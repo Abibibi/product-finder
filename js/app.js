@@ -7,16 +7,24 @@ const app = {
         
         app.container.innerHTML = '';
         
+        app.headerElement();
         app.titleElement();
         app.formElement();
         app.productList();
+    },
+
+    headerElement: () => {
+        app.header = document.createElement('header');
+        app.header.classList.add('header');
+        app.container.appendChild(app.header);
     },
 
     titleElement: () => {
         app.title = document.createElement('h1');
         app.title.classList.add('title');
         app.title.textContent = 'Mes produits capillaires';
-        app.container.appendChild(app.title);
+
+        app.header.appendChild(app.title);
     },
 
     formElement: () => {
@@ -28,7 +36,7 @@ const app = {
         app.selectElement();
         app.inputLabelButtonElements();
 
-        app.container.appendChild(app.form);
+        app.header.appendChild(app.form);
     },
 
     selectElement: () => {
@@ -42,13 +50,13 @@ const app = {
             app.selectedCategory = app.select.value;
         });
 
-        app.selectLabel = document.createElement('label');
-        app.selectLabel.classList.add('form-label', 'form-select-label')
-        app.selectLabel.textContent = 'Type de produit';
+        /* app.selectLabel = document.createElement('label');
+        app.selectLabel.classList.add('form-label', 'form-select-label');
+        app.selectLabel.textContent = 'Type de produit'; */
 
         // to make label go up on focus, and go back down on blur
         // (label is in position absolute, see css)
-        app.select.addEventListener('focus', () => {
+        /* app.select.addEventListener('focus', () => {
             app.selectLabel.classList.add('form-label-focus');
             app.select.classList.add('form-select-black');
         });
@@ -58,10 +66,10 @@ const app = {
                 app.selectLabel.classList.remove('form-label-focus', 'form-select-black');
                 app.select.classList.remove('form-select-black');
             }
-        });
+        }); */
 
         app.firstOption = document.createElement('option');
-        app.firstOption.textContent = ' -- Type de produit -- ';
+        app.firstOption.textContent = 'Type de produit';
         app.firstOption.classList.add('form-firstoption');
         app.select.appendChild(app.firstOption);
 
@@ -76,7 +84,7 @@ const app = {
         });
 
         app.form.appendChild(app.select);
-        app.form.appendChild(app.selectLabel);
+        /* app.form.appendChild(app.selectLabel); */
     },
 
     inputLabelButtonElements: () => {
@@ -92,6 +100,7 @@ const app = {
 
         // to make label go up on focus, and go back down on blur
         // (label is in position absolute, see css)
+   
         app.input.addEventListener('focus', () => {
             app.inputLabel.classList.add('form-label-focus');
         });
@@ -102,6 +111,13 @@ const app = {
             }
         });
 
+        app.inputLabelContainer = document.createElement('div');
+        app.inputLabelContainer.classList.add('form-input-label-container');
+        app.inputLabelContainer.append(
+            app.input,
+            app.inputLabel
+        );
+
         // creating Form button
         app.buttonDiv = document.createElement('div');
         app.button = document.createElement('button');
@@ -109,8 +125,7 @@ const app = {
         app.button.textContent = 'Ok';
         app.buttonDiv.appendChild(app.button);
     
-        app.form.appendChild(app.input);
-        app.form.appendChild(app.inputLabel);
+        app.form.appendChild(app.inputLabelContainer);
         app.form.appendChild(app.buttonDiv);
     },
 
