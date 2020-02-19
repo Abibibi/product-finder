@@ -10,6 +10,7 @@ const app = {
         
         app.headerElement();
         app.titleNavElements();
+        app.burgerMenu();
         app.formElement();
         app.productList();
     },
@@ -23,22 +24,49 @@ const app = {
     titleNavElements: () => {
         app.title = document.createElement('h1');
         app.title.classList.add('title');
-        app.title.textContent = 'Mes produits capillaires';
+        app.title.textContent = 'Natural Haircare';
 
         app.nav = document.createElement('nav');
+        app.nav.classList.add('nav');
+
         app.ul = document.createElement('ul');
         app.ul.classList.add('nav-links');
 
         navlinks.map((navlink) => {
             app.li = document.createElement('li');
+            app.li.classList.add('nav-link');
+
             app.a = document.createElement('a');
-            app.a.setAttribute('href', navlink === 'Accueil' ? '#' : 'mailto:abeba.ngwe@gmail.com?Subject=Prise de contact');
+            app.a.setAttribute('href', navlink === 'Contact' ? 'mailto:abeba.ngwe@gmail.com?Subject=Prise de contact' : '#');
+
             if (navlink === 'Contact') {
                 app.a.setAttribute('target', '_blank');
                 app.a.setAttribute('rel', 'noopener noreferrer');
+            };
+
+            // to display navlinks values in the plural ('Shampoings', 'Après-shampoings'...)
+            if (navlink !== 'Accueil' && navlink !== 'Contact') {
+                let splitNavlink = navlink.split(' ');
+
+                let splitPluralNavLink = splitNavlink.map((splitNavLinkWord) => `${splitNavLinkWord}s`);
+
+                const pluralNavLink = splitPluralNavLink.join(' ');
+                
+                app.a.id = navlink;
+
+                app.a.textContent = pluralNavLink;
+
+            } else {
+                app.a.textContent = navlink;
             }
-            app.a.textContent = navlink;
-            
+
+            app.a.addEventListener('click', (event) => {
+                app.selectedCategory = event.target.id;
+                app.handleEvent(event);
+            });
+
+            console.log(app.selectedCategory);
+
             app.li.appendChild(app.a);
             app.ul.appendChild(app.li);
         });
@@ -58,11 +86,29 @@ const app = {
         );
     },
 
+    burgerMenu: () => {
+        app.burger = document.createElement('div');
+        app.burger.classList.add('burger');
+
+        for (let i = 0; i<3; i++) {
+            app.burgerLine = document.createElement('div');
+            app.burgerLine.classList.add('burger-lines', `burger-line${i+1}`);
+
+            app.burger.appendChild(app.burgerLine);
+        };
+
+        app.burger.addEventListener('click', () => {
+            app.ul.classList.toggle('nav-active');
+        })
+
+        app.nav.appendChild(app.burger);
+    },
+
     formElement: () => {
         // creating Form
         app.form = document.createElement('form');
         app.form.classList.add('form');
-        app.form.addEventListener('submit', app.handleSubmit);
+        app.form.addEventListener('submit', app.handleEvent);
 
         app.selectElement();
         app.inputLabelButtonElements();
@@ -80,24 +126,6 @@ const app = {
         app.select.addEventListener('change', () => {
             app.selectedCategory = app.select.value;
         });
-
-        /* app.selectLabel = document.createElement('label');
-        app.selectLabel.classList.add('form-label', 'form-select-label');
-        app.selectLabel.textContent = 'Type de produit'; */
-
-        // to make label go up on focus, and go back down on blur
-        // (label is in position absolute, see css)
-        /* app.select.addEventListener('focus', () => {
-            app.selectLabel.classList.add('form-label-focus');
-            app.select.classList.add('form-select-black');
-        });
-
-        app.select.addEventListener('blur', () => {
-            if (!app.select.value) {
-                app.selectLabel.classList.remove('form-label-focus', 'form-select-black');
-                app.select.classList.remove('form-select-black');
-            }
-        }); */
 
         app.firstOption = document.createElement('option');
         app.firstOption.textContent = 'Type de produit';
@@ -214,11 +242,15 @@ const app = {
         app.productListDiv.appendChild(app.oneProductDiv);
     },
 
-    handleSubmit: (event) => {
+    handleEvent: (event) => {
+        // 2 types of events may happen:
+        // a form submission
+        // or a click on of the the nav links
+
         event.preventDefault();
 
         // matchedProducts array is cleared
-        // so no product from a previous search
+        // so no product from a previous search / click
         // is displayed anymore
         // (see productList method)
         matchedProducts.length = 0;
@@ -230,23 +262,30 @@ const app = {
 
                 // if category selected by user matches the category of one of the product arrays
                 if (app.selectedCategory === categoryProduct) {
-
+                    console.log(app.selectedCategory);
                     // only matched array is kept
                     eachCategoryProducts.map((eachProduct) => {
-
-                        if (eachProduct.price < app.input.value) {
-                            // if, in this array, products match price given by user,
-                            // they are put in matchedProducts array,
-                            // which is to be displayed
-                            // (see productList method)
-                            console.log(eachProduct);
+                        
+                        if (app.input.value) {
+                            if (eachProduct.price < app.input.value) {
+                                // if, in this array, products match price given by user,
+                                // they are put in matchedProducts array,
+                                // which is to be displayed
+                                // (see productList method)
+                                matchedProducts.push(eachProduct);
+                            }
+                        // if the event that occured
+                        // is a click on one of the navbar links,
+                        // matchedProducts is filled with products
+                        // whose category matches the link clicked
+                        } else {
                             matchedProducts.push(eachProduct);
-
                         }
                     });
                 }
             }
         });
+        console.log(matchedProducts);
         app.init();
         app.form.reset();
     },
