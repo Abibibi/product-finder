@@ -12,6 +12,12 @@ const app = {
         app.titleNavElements();
         app.burgerMenu();
         app.formElement();
+        // if user has not clicked any navbar links
+        // or submitted the form to display specific products,
+        // suggested products are displayed
+        if (!matchedProducts.length) {
+            app.suggestedProducts();
+        }
         app.productList();
     },
 
@@ -24,7 +30,11 @@ const app = {
     titleNavElements: () => {
         app.title = document.createElement('h1');
         app.title.classList.add('title');
-        app.title.textContent = 'Natural Haircare';
+        app.titleLink = document.createElement('a');
+        app.titleLink.textContent = 'Natural Haircare';
+        app.titleLink.setAttribute('href', '#');
+
+        app.title.appendChild(app.titleLink);
 
         app.nav = document.createElement('nav');
         app.nav.classList.add('nav');
@@ -64,8 +74,6 @@ const app = {
                 app.selectedCategory = event.target.id;
                 app.handleEvent(event);
             });
-
-            console.log(app.selectedCategory);
 
             app.li.appendChild(app.a);
             app.ul.appendChild(app.li);
@@ -192,6 +200,7 @@ const app = {
         matchedProducts.map((matchedProduct) => {
             app.product(matchedProduct);
         });
+        
         app.container.appendChild(app.productListDiv);
     },
 
@@ -242,6 +251,20 @@ const app = {
         app.productListDiv.appendChild(app.oneProductDiv);
     },
 
+    suggestedProducts: () => {
+        products.map((categoryName) => {
+            
+            /* categoryProduct.map((product) => {
+                matchedProducts.push(product);
+            }) */
+            const eachCategoryProducts = Object.values(categoryName)[0];
+
+            eachCategoryProducts.map((product) => {
+                matchedProducts.push(product);
+            });
+        })
+    },
+
     handleEvent: (event) => {
         // 2 types of events may happen:
         // a form submission
@@ -274,7 +297,8 @@ const app = {
                                 // (see productList method)
                                 matchedProducts.push(eachProduct);
                             }
-                        // if the event that occured
+                        // is no price was entered,
+                        // or if the event that occured
                         // is a click on one of the navbar links,
                         // matchedProducts is filled with products
                         // whose category matches the link clicked

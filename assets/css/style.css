@@ -1,19 +1,19 @@
 body {
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 #todo {
-    display: flex;
-    justify-content: center;
     font-family: 'Roboto', sans-serif;
+    background-image: url('https://www.cjoint.com/doc/20_02/JBub0AeTEfA_leaf-transparent-fond-autre.png');
+    background-color: #2d2409;
 }
 
 .header {
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #fff582;
     padding: 0 2vw;
 }
 
@@ -43,14 +43,13 @@ body {
 .burger-lines {
     width: 25px;
     height: 3px;
-    background-color: rgb(197, 193, 193);
+    background-color: #ffffff;
     margin: 5px;
 }
 
 .form {
     display: flex;
     height: 2.7rem;
-    border: .2rem solid darkgray;
     background-color: #ffffff;
 }
 
@@ -89,7 +88,7 @@ body {
 }
 
 .form-input-label {
-    top: .85rem;
+    top: 1rem;
     left: 0;
 }
 
@@ -102,7 +101,7 @@ body {
 .form-button {
     font-weight: 600;
     width: 15%;
-    background-color: #ff025f;
+    background-color: #bba71b;
     color: #ffffff;
     border: none;
     z-index: 1;
@@ -119,8 +118,9 @@ body {
 
 .products {
     display: flex;
-    position: absolute;
-    top: 17rem;
+    width: 80%;
+    margin: 5rem auto 0;
+    background-color: #ffffff;
 }
 
 .products-product {
@@ -128,10 +128,10 @@ body {
     flex-direction: column;
     text-align: center;
     align-items: center;
-    width: 18rem;
-    height: 21rem;
+    width: 15rem;
+    height: 26rem;
     position: relative;
-    background: #f3eded;
+    background: #ffffff;
     border-radius: 1.9rem;
 }
 
@@ -141,7 +141,7 @@ body {
 }
 
 .products-product-imgdiv .products-product-imgdiv-img {
-    max-width: 66.2%;
+    max-width: 100%;
     max-height: 100%;
     margin: .9rem 0 1rem;
     -webkit-transition: all 1s ease; /* Safari and Chrome */
@@ -152,34 +152,30 @@ body {
 }
 
 .products-product-imgdiv:hover .products-product-imgdiv-img {
-    -webkit-transform:scale(1.2); /* Safari and Chrome */
-    -moz-transform:scale(1.2); /* Firefox */
-    -ms-transform:scale(1.2); /* Internet Explorer 9 */
-    -o-transform:scale(1.2); /* Opera */
-    transform:scale(1.2);
+    -webkit-transform:scale(1.4); /* Safari and Chrome */
+    -moz-transform:scale(1.4); /* Firefox */
+    -ms-transform:scale(1.4); /* Internet Explorer 9 */
+    -o-transform:scale(1.4); /* Opera */
+    transform:scale(1.4);
 }
 
 .products-product-name-brand {
     width: 100%;
     padding: .8rem;
-    background-color: #7b6161;
-    color: white;
+    border-top: rgb(189, 189, 189) solid 1px;
 }
 
 .products-product-name {
-    font-family: 'Poiret One', cursive;
+    color:#82817d;
 }
 
 .products-product-brand {
     margin-top: .8rem;
     font-size: .8rem;
-    font-family: 'Gayathri', sans-serif;
 }
 
 .products-product-category {
-    margin-top: 1.6rem;
     font-size: .7rem;
-    font-family: 'Gayathri', sans-serif;
 }
 
 .products-product-price {
@@ -189,7 +185,7 @@ body {
     font-family: 'Gayathri', sans-serif;
 }
 
-@media screen and (min-width: 300px) and (max-width: 899px) {
+@media screen and (min-width: 300px) and (max-width: 1023px) {
     .header {
         flex-direction: column;
         height: 20vh;
@@ -205,7 +201,7 @@ body {
         height: 92vh;
         top: 8vh;
         z-index: 2;
-        background-color: #000000;
+        background-color: #fff582;
         flex-direction: column;
         align-items: center;
         width: 50%;
@@ -238,14 +234,14 @@ body {
 
     .products {
         flex-direction: column;
+        align-items: center;
     }
 
     .products-product {
-        margin: 1rem 0;
     }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1024px) {
     .header {
         flex-direction: row;
         align-items: center;
@@ -295,11 +291,11 @@ body {
     }
 
     .products {
-        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: space-around;
     }
 
     .products-product {
-        margin: 0 1rem;
     }
 }
 
