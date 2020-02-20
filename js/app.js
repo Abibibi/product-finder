@@ -38,6 +38,14 @@ const app = {
         app.titleLink.textContent = 'Natural Haircare';
         app.titleLink.setAttribute('href', '#');
 
+        app.title.addEventListener('click', () => {
+            // to clear matchedProducts array
+            // and thus display all suggested products
+            // (see init method)
+            matchedProducts.length = 0;
+            app.init();
+        });
+
         app.title.appendChild(app.titleLink);
 
         app.nav = document.createElement('nav');
@@ -217,6 +225,11 @@ const app = {
     },
 
     product: (hairProduct) => {
+        app.oneProductLink = document.createElement('a');
+        app.oneProductLink.setAttribute('href', hairProduct.link);
+        app.oneProductLink.setAttribute('target', '_blank');
+        app.oneProductLink.setAttribute('rel', 'noopener noreferrer');
+
         // creating one box containing one product
         app.oneProductDiv = document.createElement('div');
         app.oneProductDiv.classList.add('products-product');
@@ -258,9 +271,11 @@ const app = {
             app.productCategory,
             app.productPrice
         );
+
+        app.oneProductLink.appendChild(app.oneProductDiv);
     
         // adding each product box in product list
-        app.productListDiv.appendChild(app.oneProductDiv);
+        app.productListDiv.appendChild(app.oneProductLink);
     },
 
     suggestedProducts: () => {
