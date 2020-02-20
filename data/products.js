@@ -5,7 +5,7 @@ export default [
             {
                 name: 'Leave-in Conditioning Repair Cream',
                 brand: 'Cantu',
-                picture: 'https://www.cjoint.com/doc/20_01/JArbgu3iIuA_cantu-leave-in-conditioning-repair-cream-removebg-preview.png',
+                picture: 'https://www.cjoint.com/doc/20_02/JBueMVUS0sA_cantu.png',
                 category: 'Lait capillaire',
                 alt: 'Lait capillaire Leave-in Conditioning Repair Cream de la marque Cantu',
                 price: 7.95
@@ -13,7 +13,7 @@ export default [
             {
                 name: 'Crème brulée',
                 brand: 'Curls',
-                picture: 'https://www.cjoint.com/doc/20_01/JArbiGUyXsA_curls-creme-brulee-removebg-preview.png',
+                picture: 'https://www.cjoint.com/doc/20_02/JBufx2yzGaA_curls.png',
                 category: 'Lait capillaire',
                 alt: 'Lait capillaire Crème brulée de la marque Curls',
                 price: 14.90
@@ -21,7 +21,7 @@ export default [
             {
                 name: 'Twist-Elongating Style Cream',
                 brand: 'Melanin Haircare',
-                picture: 'https://www.cjoint.com/doc/20_01/JArby1xIzdA_MelaninWebsite-TwistCream-20mx-600x-copie.png',
+                picture: 'https://www.cjoint.com/doc/20_02/JBufnLadz8A_melanin-haircare.png',
                 category: 'Lait capillaire',
                 alt: 'Lait capillaire Twist-Elongating Style Cream de la marque Melanin Haircare',
                 price: 18.99
@@ -34,7 +34,7 @@ export default [
             {
                 name: 'In control',
                 brand: 'Aunt Jackie\'s',
-                picture: 'https://www.cjoint.com/doc/20_01/JArbATVbUfA_aunt-jackie-s-curls-coils-in-control-conditioner-a-rincer-removebg-preview.png',
+                picture: 'https://www.cjoint.com/doc/20_02/JBufvGC6qDA_aunt-jackies.png',
                 category: 'Après-shampoing',
                 alt: '',
                 price: 9.90
@@ -42,14 +42,14 @@ export default [
             {
                 name: 'Knot Today',
                 brand: 'Kinky Curly',
-                picture: 'https://www.cjoint.com/doc/20_01/JArbBVrgo3A_apres-shampoing-ultra-demelant-knot-today-removebg-preview.png',
+                picture: 'https://www.cjoint.com/doc/20_02/JBueL0tTuzA_kinky-curly.png',
                 category: 'Après-shampoing',
                 price: 14.90
             },
             {
                 name: 'Caribbean Coconut Milk Conditioner',
                 brand: 'Alikay Naturals',
-                picture: 'https://www.cjoint.com/doc/20_01/JArbDxzHLaA_alikay-caribbean-coconut-milk-shampoo-236ml-removebg-preview.png',
+                picture: 'https://www.cjoint.com/doc/20_02/JBueJYDfCxA_alikay.png',
                 category: 'Après-shampoing',
                 price: 15.99
             }
@@ -67,14 +67,14 @@ export default [
             {
                 name: 'Hydrating Invigorating Shampoo',
                 brand: 'Jane Carter Solution',
-                picture: 'https://www.cjoint.com/doc/20_01/JArbHBVJ7nA_jane-carter-solution-hydrating-invigorating-shampoo-removebg-preview.png',
+                picture: 'https://www.cjoint.com/doc/20_02/JBufuQinONA_janer-carter.png',
                 category: 'Shampoing',
                 price: 11.90
             },
             {
                 name: 'Get Clarity',
                 brand: 'Entwine Couture',
-                picture: 'https://www.cjoint.com/doc/20_01/JArbIvFV5vA_entwine-couture-shampooing-detoxifiant-get-clarity-removebg-preview.png',
+                picture: 'https://www.cjoint.com/doc/20_02/JBueI2pQYHA_entwine.png',
                 category: 'Shampoing',
                 price: 16.99
             }

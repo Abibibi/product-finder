@@ -298,9 +298,7 @@ const app = {
                 // if category selected by user matches the category of one of the product arrays
                 if (app.selectedCategory === categoryProduct) {
                     
-                    // formatting category selected by user
-                    // to display it properly later
-                    
+                    let titleToDisplay = '';
 
                     // only matched array is kept
                     eachCategoryProducts.map((eachProduct) => {
@@ -312,8 +310,6 @@ const app = {
                                 // (see productList method)
                                 
                                 matchedProducts.push(eachProduct);
-
-                                let titleToDisplay = '';
 
                                 // to display the results title
                                 // with the proper number
@@ -334,8 +330,10 @@ const app = {
                         // matchedProducts is filled with products
                         // whose category matches the link clicked
                         } else {
-                            app.productsTitleContent = `${app.selectedCategory}`;
                             matchedProducts.push(eachProduct);
+                            const splitCategory = app.selectedCategory.split(' ');
+                            titleToDisplay = splitCategory.map((category) => category + 's').join(' ');
+                            app.productsTitleContent = `${titleToDisplay}`;
                         }
                     });
                 }

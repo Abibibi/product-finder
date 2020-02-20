@@ -111,11 +111,6 @@ body {
     background-color: #c2c5be;
 }
 
-.form-button:active {
-    position: relative;
-    top: .1rem;
-}
-
 .products-title {
     color: #ffffff;
     font-size: 1.8em;
@@ -139,21 +134,21 @@ body {
     text-align: center;
     align-items: center;
     width: 15rem;
-    height: 26rem;
+    height: 20rem;
     position: relative;
     background: #ffffff;
     border-radius: 1.9rem;
 }
 
 .products-product-imgdiv {
-    width: 12.7rem;
-    height: auto;
+    width: 10rem;
+    height: 10rem;
 }
 
 .products-product-imgdiv .products-product-imgdiv-img {
     max-width: 100%;
     max-height: 100%;
-    margin: .9rem 0 1rem;
+    padding: 1rem;
     -webkit-transition: all 1s ease; /* Safari and Chrome */
     -moz-transition: all 1s ease; /* Firefox */
     -ms-transition: all 1s ease; /* Internet Explorer 9 */
@@ -162,11 +157,11 @@ body {
 }
 
 .products-product-imgdiv:hover .products-product-imgdiv-img {
-    -webkit-transform:scale(1.4); /* Safari and Chrome */
-    -moz-transform:scale(1.4); /* Firefox */
-    -ms-transform:scale(1.4); /* Internet Explorer 9 */
-    -o-transform:scale(1.4); /* Opera */
-    transform:scale(1.4);
+    -webkit-transform:scale(1.2); /* Safari and Chrome */
+    -moz-transform:scale(1.2); /* Firefox */
+    -ms-transform:scale(1.2); /* Internet Explorer 9 */
+    -o-transform:scale(1.2); /* Opera */
+    transform:scale(1.2);
 }
 
 .products-product-name-brand {
