@@ -108,7 +108,7 @@ body {
 }
 
 .form-button:hover {
-    background-color: #c2c5be;
+    background-color: #1C3119;
 }
 
 .products-title {
@@ -345,6 +345,7 @@ body {
     .footer-container {
         width: 60%;
         height: 80%;
+        justify-content: space-around;
     }
 
     .footer-container-links {
