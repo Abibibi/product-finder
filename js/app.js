@@ -1,6 +1,7 @@
-import navlinks from '../data/navlinks.js';
+import navLinks from '../data/navLinks.js';
 import products from '../data/products.js';
 import matchedProducts from '../data/matchedProducts.js';
+import footerLinks from '../data/footerLinks.js';
 
 const app = {   
     init: () => {
@@ -23,6 +24,7 @@ const app = {
         }
         
         app.productList();
+        app.footerElement();
     },
 
     headerElement: () => {
@@ -54,32 +56,32 @@ const app = {
         app.ul = document.createElement('ul');
         app.ul.classList.add('nav-links');
 
-        navlinks.map((navlink) => {
+        navLinks.map((navLink) => {
             app.li = document.createElement('li');
             app.li.classList.add('nav-link');
 
             app.a = document.createElement('a');
-            app.a.setAttribute('href', navlink === 'Contact' ? 'mailto:abeba.ngwe@gmail.com?Subject=Prise de contact' : '#');
+            app.a.setAttribute('href', navLink === 'Contact' ? 'mailto:abeba.ngwe@gmail.com?Subject=Prise de contact' : '#');
 
-            if (navlink === 'Contact') {
+            if (navLink === 'Contact') {
                 app.a.setAttribute('target', '_blank');
                 app.a.setAttribute('rel', 'noopener noreferrer');
             };
 
-            // to display navlinks values in the plural ('Shampoings', 'Après-shampoings'...)
-            if (navlink !== 'Accueil' && navlink !== 'Contact') {
-                let splitNavlink = navlink.split(' ');
+            // to display navLinks values in the plural ('Shampoings', 'Après-shampoings'...)
+            if (navLink !== 'Accueil' && navLink !== 'Contact') {
+                let splitNavLink = navLink.split(' ');
 
-                let splitPluralNavLink = splitNavlink.map((splitNavLinkWord) => `${splitNavLinkWord}s`);
+                let splitPluralNavLink = splitNavLink.map((splitNavLinkWord) => `${splitNavLinkWord}s`);
 
                 const pluralNavLink = splitPluralNavLink.join(' ');
                 
-                app.a.id = navlink;
+                app.a.id = navLink;
 
                 app.a.textContent = pluralNavLink;
 
             } else {
-                app.a.textContent = navlink;
+                app.a.textContent = navLink;
             }
 
             app.a.addEventListener('click', (event) => {
@@ -336,7 +338,7 @@ const app = {
                                     titleToDisplay = app.selectedCategory;
                                 }
 
-                                app.productsTitleContent = `${titleToDisplay} à moins de ${app.input.value} €`;
+                                app.productsTitleContent = `${titleToDisplay} de moins de ${app.input.value} €`;
 
                             }
                         // is no price was entered,
@@ -358,6 +360,53 @@ const app = {
         app.init();
         app.form.reset();
     },
+
+    footerElement: () => {
+        app.footer = document.createElement('footer');
+        app.footer.classList.add('footer');
+
+        app.footerDiv = document.createElement('div');
+        app.footerDiv.classList.add('footer-container');
+        
+        app.footerLinks = document.createElement('div');
+        app.footerLinks.classList.add('footer-container-links');
+
+        footerLinks.map((footerLink) => {
+            app.footerContact = document.createElement('p');
+            
+            app.footerContactLink = document.createElement('a');
+            app.footerContactLink.setAttribute('href', footerLink.link);
+            app.footerContactLink.setAttribute('target', '_blank');
+            app.footerContactLink.setAttribute('rel', 'noopener noreferrer');
+            app.footerContactLink.textContent = footerLink.type;
+
+            app.footerContact.appendChild(app.footerContactLink);
+            app.footerLinks.appendChild(app.footerContact);
+        });
+
+        app.copyrightDiv = document.createElement('div');
+        app.copyrightDiv.classList.add('footer-container-copyright');
+
+        app.copyright = document.createElement('p');
+        app.copyright.textContent = 'Natural Haircare - 2020 ©';
+
+        app.pictureCopyright = document.createElement('p');
+        app.pictureCopyright.innerHTML = 'Crédit photo : <a href="https://pixabay.com/users/Yousz-1216526/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2310247">Yousz</a> de <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2310247">Pixabay</a>';
+
+        app.copyrightDiv.append(
+            app.copyright,
+            app.pictureCopyright
+        );
+
+        app.footerDiv.append(
+            app.footerLinks,
+            app.copyrightDiv
+        )
+
+        app.footer.appendChild(app.footerDiv);
+
+        app.container.appendChild(app.footer);
+    }
 }
 
 // When DOM is loaded, app.init is called

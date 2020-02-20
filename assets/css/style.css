@@ -124,7 +124,7 @@ body {
 .products {
     display: flex;
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 3rem;
     padding: 1rem 0;
     background-color: #ffffff;
 }
@@ -191,6 +191,17 @@ body {
     font-family: 'Gayathri', sans-serif;
 }
 
+.footer {
+    background-color: #1a2d18;
+    color: #ffffff;
+}
+
+.footer-container {
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+}
+
 @media screen and (min-width: 300px) and (max-width: 1023px) {
     .header {
         flex-direction: column;
@@ -241,6 +252,33 @@ body {
     .products {
         flex-direction: column;
         align-items: center;
+    }
+
+    .footer {
+        height: 25vh;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    .footer-container-links {
+        text-align: center;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .footer-container-copyright {
+        text-align: center;
+        font-size: .8em;
+        height: 27%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
 }
 
@@ -295,6 +333,29 @@ body {
 
     .products {
         flex-flow: row wrap;
+        justify-content: space-around;
+    }
+
+    .footer {
+        height: 21vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-container {
+        width: 60%;
+        height: 80%;
+    }
+
+    .footer-container-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .footer-container-copyright {
+        display: flex;
+        flex-direction: column;
         justify-content: space-around;
     }
 }
