@@ -84,7 +84,7 @@ body {
 
 .form-input {
     border: none;
-    height: 2.3rem;
+    height: 100%;
 }
 
 .form-input-label {
@@ -116,10 +116,20 @@ body {
     top: .1rem;
 }
 
+.products-title {
+    color: #ffffff;
+    font-size: 1.8em;
+    padding: 0.8rem;
+    text-align: center;
+    margin: 3rem auto 0;
+    background: #1c3119;
+    width: 80%;
+}
+
 .products {
     display: flex;
     width: 80%;
-    margin: 5rem auto 0;
+    margin: 0 auto;
     background-color: #ffffff;
 }
 

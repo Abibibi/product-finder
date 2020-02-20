@@ -16,8 +16,12 @@ const app = {
         // or submitted the form to display specific products,
         // suggested products are displayed
         if (!matchedProducts.length) {
+            app.productsTitle('Nos suggestions');
             app.suggestedProducts();
+        } else {
+            app.productsTitle(app.productsTitleContent);
         }
+        
         app.productList();
     },
 
@@ -194,6 +198,14 @@ const app = {
         app.form.appendChild(app.button);
     },
 
+    productsTitle: (titleText) => {
+        app.productsTitleElement = document.createElement('h2');
+        app.productsTitleElement.classList.add('products-title');
+        app.productsTitleElement.textContent = titleText;
+
+        app.container.appendChild(app.productsTitleElement);
+    },
+
     productList: () => {
         app.productListDiv = document.createElement('div');
         app.productListDiv.classList.add('products');
@@ -285,17 +297,36 @@ const app = {
 
                 // if category selected by user matches the category of one of the product arrays
                 if (app.selectedCategory === categoryProduct) {
-                    console.log(app.selectedCategory);
+                    
+                    // formatting category selected by user
+                    // to display it properly later
+                    
+
                     // only matched array is kept
                     eachCategoryProducts.map((eachProduct) => {
-                        
                         if (app.input.value) {
                             if (eachProduct.price < app.input.value) {
                                 // if, in this array, products match price given by user,
                                 // they are put in matchedProducts array,
                                 // which is to be displayed
                                 // (see productList method)
+                                
                                 matchedProducts.push(eachProduct);
+
+                                let titleToDisplay = '';
+
+                                // to display the results title
+                                // with the proper number
+                                // according to the number of results
+                                if (matchedProducts.length > 1) {
+                                    const splitCategory = app.selectedCategory.split(' ');
+                                    titleToDisplay = splitCategory.map((category) => category + 's').join(' ');
+                                } else {
+                                    titleToDisplay = app.selectedCategory;
+                                }
+
+                                app.productsTitleContent = `${titleToDisplay} à moins de ${app.input.value} €`;
+
                             }
                         // is no price was entered,
                         // or if the event that occured
@@ -303,6 +334,7 @@ const app = {
                         // matchedProducts is filled with products
                         // whose category matches the link clicked
                         } else {
+                            app.productsTitleContent = `${app.selectedCategory}`;
                             matchedProducts.push(eachProduct);
                         }
                     });
