@@ -89,11 +89,10 @@ const app = {
                 app.a.textContent = navLink;
             }
 
-            app.a.textContent = navLink;
-
             app.a.addEventListener('click', (event) => {
                 app.selectedCategory = event.target.id;
-                app.handleEvent(event);
+
+                if (navLink !== 'Contact') app.handleEvent(event);
             });
 
             app.li.appendChild(app.a);

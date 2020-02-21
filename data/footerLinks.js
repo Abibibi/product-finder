@@ -1,6 +1,6 @@
 export default [
     {
-        type: 'Contact',
+        type: 'Envoyer un e-mail',
         link: 'mailto:abeba.ngwe@gmail.com?Subject=Prise de contact'
     },
     {
