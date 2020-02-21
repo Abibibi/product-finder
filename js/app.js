@@ -61,11 +61,16 @@ const app = {
             app.li.classList.add('nav-link');
 
             app.a = document.createElement('a');
-            app.a.setAttribute('href', navLink === 'Contact' ? 'mailto:abeba.ngwe@gmail.com?Subject=Prise de contact' : '#');
 
             if (navLink === 'Contact') {
-                app.a.setAttribute('target', '_blank');
-                app.a.setAttribute('rel', 'noopener noreferrer');
+                // to scroll to the contact information in the footer
+                // when navbar link 'Contact' is clicked
+                app.a.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: app.container.querySelector('footer').offsetTop,
+                        behavior: 'smooth'
+                    })
+                })
             };
 
             // to display navLinks values in the plural ('Shampoings', 'Après-shampoings'...)
@@ -83,6 +88,8 @@ const app = {
             } else {
                 app.a.textContent = navLink;
             }
+
+            app.a.textContent = navLink;
 
             app.a.addEventListener('click', (event) => {
                 app.selectedCategory = event.target.id;
@@ -338,7 +345,7 @@ const app = {
                                     titleToDisplay = app.selectedCategory;
                                 }
 
-                                app.productsTitleContent = `${titleToDisplay} de moins de ${app.input.value} €`;
+                                app.productsTitleContent = `${titleToDisplay} à moins de ${app.input.value} €`;
 
                             }
                         // is no price was entered,
