@@ -344,7 +344,7 @@ const app = {
                                     titleToDisplay = app.selectedCategory;
                                 }
 
-                                app.productsTitleContent = `${titleToDisplay} à moins de ${app.input.value} €`;
+                                app.productsTitleContent = `${titleToDisplay} en-dessous de ${app.input.value} €`;
 
                             }
                         // is no price was entered,
