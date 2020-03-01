@@ -1,7 +1,7 @@
 body {
     overflow-x: hidden;
     overflow-y: scroll;
-    background-image: url('https://www.cjoint.com/doc/20_02/JBub0AeTEfA_leaf-transparent-fond-autre.png');
+    background-image: url('https://www.cjoint.com/doc/20_03/JCbioHGeaeA_JBub0AeTEfA-leaf-transparent-fond-autre-1-.png');
     background-color: #2d2409;
 }
 
@@ -118,7 +118,7 @@ body {
 }
 
 .form-button:hover {
-    background-color: #1C3119;
+    background-color: #cfbc59;
 }
 
 .products-title {
@@ -228,6 +228,7 @@ body {
         width: 180vw;
         margin: 0;
         position: initial;
+        font-size: 4.4vh;
     }
 
     #todo .title-nav-container {
@@ -427,7 +428,7 @@ body {
     }
 
     .products-product {
-        width: 23vw;
+        width: 17vw;
         height: 57vh;
     }
 
