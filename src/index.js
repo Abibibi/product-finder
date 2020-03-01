@@ -1,7 +1,10 @@
-import navLinks from '../data/navLinks.js';
-import products from '../data/products.js';
-import matchedProducts from '../data/matchedProducts.js';
-import footerLinks from '../data/footerLinks.js';
+import navLinks from './data/navLinks.js';
+import products from './data/products.js';
+import matchedProducts from './data/matchedProducts.js';
+import footerLinks from './data/footerLinks.js';
+
+import './styles/css/reset.css';
+import './styles/css/style.css';
 
 const app = {   
     init: () => {
