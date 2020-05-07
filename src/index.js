@@ -429,5 +429,5 @@ const app = {
     }
 }
 
-// When DOM is loaded, app.init is called
+// Once DOM is loaded, app.init is called
 document.addEventListener('DOMContentLoaded', app.init);
